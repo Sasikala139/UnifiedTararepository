@@ -1,0 +1,17 @@
+pom\UnifiedTara\pages\TopMenu.class
+pom\UnifiedTara\pages\POS_Order.class
+pom\UnifiedTara\pages\OTPread_Page.class
+pom\UnifiedTara\pages\HomePage.class
+pom\UnifiedTara\pages\add_paymentoption_Page.class
+pom\UnifiedTara\pages\OrderMgt_Page.class
+pom\UnifiedTara\pages\StoreCreation_Page.class
+pom\UnifiedTara\pages\OrderProducts_IndividualUser_Page.class
+pom\UnifiedTara\pages\Promotion_Page.class
+pom\UnifiedTara\pages\voucher_page.class
+pom\UnifiedTara\util\ExtentManager.class
+pom\UnifiedTara\pages\CollectMoney_Page.class
+pom\UnifiedTara\pages\SendMoney_Page.class
+pom\UnifiedTara\pages\base\BasePage.class
+pom\UnifiedTara\pages\AddProduct_Page.class
+pom\UnifiedTara\util\TMConstants.class
+pom\UnifiedTara\pages\Dashboard_Page.class

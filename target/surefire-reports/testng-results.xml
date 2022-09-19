@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2022-09-19T09:50:21Z" name="Suite" finished-at="2022-09-19T09:51:34Z" duration-ms="72807">
+    <groups>
+    </groups>
+    <test started-at="2022-09-19T09:50:21Z" name="Test" finished-at="2022-09-19T09:51:34Z" duration-ms="72807">
+      <class name="pom.UnifiedTaraTests.practice">
+        <test-method signature="Login_readOTP()[pri:0, instance:pom.UnifiedTaraTests.practice@59e505b2]" started-at="2022-09-19T15:20:21Z" name="Login_readOTP" finished-at="2022-09-19T15:21:33Z" duration-ms="72443" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Login_readOTP -->
+        <test-method is-config="true" signature="quit()[pri:0, instance:pom.UnifiedTaraTests.practice@59e505b2]" started-at="2022-09-19T15:21:33Z" name="quit" finished-at="2022-09-19T15:21:34Z" duration-ms="353" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- quit -->
+      </class> <!-- pom.UnifiedTaraTests.practice -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+</testng-results>
