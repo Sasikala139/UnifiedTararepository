@@ -1,4 +1,4 @@
-package pom.UnifiedTaraTests;
+package pom.UnifiedTara_realnumber_Tests;
 
 import java.io.IOException;
 
@@ -11,13 +11,11 @@ import pom.UnifiedTara.pages.StoreCreation_Page;
 import pom.UnifiedTara.pages.add_paymentoption_Page;
 import pom.UnifiedTara.util.TMConstants;
 
-public class Store_creation extends BaseTest {
-
-	String testName = "StoreCreation";
+public class Createstoreindividual extends BaseTest {
 
 	@Test
 	public void StoreCreation() throws InterruptedException, IOException {
-		test = rep.startTest(testName);
+		test = rep.startTest("individualuser");
 		test.log(LogStatus.INFO, "Starting the store creation test ");
 		launchApp();
 		Thread.sleep(4000);
@@ -28,16 +26,16 @@ public class Store_creation extends BaseTest {
 			hm.reportFail("login page is not not loaded");
 		}
 		Thread.sleep(10000);
-		hm.OTPValidation(TMConstants.MobileNumber, TMConstants.OTP0, TMConstants.OTP1, TMConstants.OTP2,
-				TMConstants.OTP3, TMConstants.OTP4, TMConstants.OTP5);
+		// hm.OTPValidation(TMConstants.MobileNumber,TMConstants.OTP0,TMConstants.OTP1,TMConstants.OTP2,TMConstants.OTP3,TMConstants.OTP4,TMConstants.OTP5);
 		// Runtime.getRuntime().exec("taskkill /F /IM cmd.exe");
+		hm.OTPValidation("9885600027", "6", "0", "0", "0", "2", "7");
 		add_paymentoption_Page addpay = new add_paymentoption_Page(aDriver, test);
-		addpay.navigateToSwitchuser();
-		Thread.sleep(3000);
+		addpay.navigatetomerchantiflareadyuser();
 		StoreCreation_Page storecreate = new StoreCreation_Page(aDriver, test);
-		storecreate.SwithUser("Merchant");
+		// storecreate.SwithUser("IndividualUser");
 		storecreate.create_store();
-		// hm.logout();
+
+		hm.logout();
 		System.out.println("executed sucessfully");
 
 	}

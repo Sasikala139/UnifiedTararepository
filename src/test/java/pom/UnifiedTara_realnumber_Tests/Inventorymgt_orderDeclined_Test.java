@@ -1,4 +1,4 @@
-package pom.UnifiedTaraTests;
+package pom.UnifiedTara_realnumber_Tests;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -9,10 +9,8 @@ import org.testng.annotations.Test;
 import com.relevantcodes.extentreports.LogStatus;
 
 import pom.UnifiedTara.pages.AddProduct_Page;
-import pom.UnifiedTara.pages.HomePage;
 import pom.UnifiedTara.pages.OrderMgt_Page;
 import pom.UnifiedTara.pages.POS_Order;
-import pom.UnifiedTara.util.TMConstants;
 
 public class Inventorymgt_orderDeclined_Test extends BaseTest {
 
@@ -20,16 +18,17 @@ public class Inventorymgt_orderDeclined_Test extends BaseTest {
 	public void Test1_OrderDeclained() throws InterruptedException, IOException {
 		test = rep.startTest("Product count check when Order declined");
 		test.log(LogStatus.INFO, "Starting inventory mgt test ");
+		System.out.println("order decline test started   ");
 
 		launchApp();
 		Thread.sleep(4000);
-		HomePage hm;
-		hm = new HomePage(aDriver, test);
-		if (!hm.isElementPresent(TMConstants.Mobile_Text1)) {
-			hm.reportFail("login page is not not loaded");
-		}
-		hm.OTPValidation(TMConstants.MobileNumber, TMConstants.OTP0, TMConstants.OTP1, TMConstants.OTP2,
-				TMConstants.OTP3, TMConstants.OTP4, TMConstants.OTP5);
+
+//			OTPread_Page otppage=new OTPread_Page(aDriver, test);
+//			
+//			if(!otppage.isElementPresent(TMConstants.Mobile_Text1)){
+//				otppage.reportFail("login page is not not loaded");
+//			}
+//			otppage.OTPValidationMethod(TMConstants.RealMobileNumber);		
 		// Runtime.getRuntime().exec("taskkill /F /IM cmd.exe");
 //			add_paymentoption_Page addpay=new add_paymentoption_Page(aDriver, test);
 //			addpay.navigatetomerchantiflareadyuser();
@@ -37,15 +36,17 @@ public class Inventorymgt_orderDeclined_Test extends BaseTest {
 		AddProduct_Page addprod = new AddProduct_Page(aDriver, test);
 		// sp.SwithUser("Merchant");
 		addprod.NavigationTo_addProduct();
-		addprod.AddProductfororder("TestProductforOrderdeclined", "1000", "10");
+		addprod.AddProductfororder("ProdOrderdeclined", "1000", "10");
 		Thread.sleep(5000);
+		addprod.SearchProduct("ProdOrderdeclined");
 		WebElement productstirng = aDriver
-				.findElementByXPath("//android.view.View[contains(@content-desc,'TestProductforOrderdeclined')]");
+				.findElementByXPath("//android.view.View[contains(@content-desc,\"ProdOrderdeclined\")]");
 		String beforeorderquantity = productstirng.getTagName();
 		aDriver.navigate().back();
+
 		POS_Order pos = new POS_Order(aDriver, test);
 		Thread.sleep(4000);
-		pos.SearchProduct("TestProductforOrderdeclined");
+		pos.SearchProduct("ProdOrderdeclined");
 		pos.OrderThroughPos_cash();
 
 		// Declining order
@@ -54,13 +55,16 @@ public class Inventorymgt_orderDeclined_Test extends BaseTest {
 		// WebElement
 		// productToDeclineele=aDriver.findElementByXPath("//android.widget.ImageView[contains(@content-desc,'TestProductforOrderdeclined')]");
 		OrderMgt_Page ordpage = new OrderMgt_Page(aDriver, test);
-		ordpage.Decline_Order("TestProductforOrderdeclined");
-		addprod.NavigationTo_addProduct();
-		Thread.sleep(12000);
+		ordpage.Decline_Order("ProdOrderdeclined");
+		Thread.sleep(2000);
+		aDriver.findElementByXPath("//android.widget.ImageView[@content-desc=\"Inventory\"]").click();
+
+		// addprod.NavigationTo_addProduct();
+		Thread.sleep(6000);
+		addprod.SearchProduct("ProdOrderdeclined");
 		WebElement productstirng1 = aDriver
-				.findElementByXPath("//android.view.View[contains(@content-desc,'TestProductforOrderdeclined')]");
+				.findElementByXPath("//android.view.View[contains(@content-desc,\"ProdOrderdeclined\")]");
 		String afterrderquantity = productstirng1.getTagName();
-		aDriver.navigate().back();
 
 		// spliting beforequantity
 		String datasplit[];
@@ -99,6 +103,9 @@ public class Inventorymgt_orderDeclined_Test extends BaseTest {
 			test.log(LogStatus.FAIL, "Ooops! Count is changed ");
 
 		}
+
+		System.out.println("order decline test ended successfully  ");
+		Thread.sleep(2000);
 
 	}
 

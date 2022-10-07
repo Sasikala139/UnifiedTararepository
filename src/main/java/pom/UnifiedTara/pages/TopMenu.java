@@ -8,18 +8,18 @@ import io.appium.java_client.android.AndroidElement;
 public class TopMenu {
 	public AndroidDriver<AndroidElement> aDriver;
 	public ExtentTest test;
-	
+
 	public TopMenu(AndroidDriver<AndroidElement> aDriver, ExtentTest test) {
-		this.aDriver=aDriver;
-		this.test=test;
+		this.aDriver = aDriver;
+		this.test = test;
 	}
 
-	public void gotoCart(){
+	public void gotoCart() {
 		// code
 	}
-	
-	public void search(){
-		
+
+	public void search() {
+
 	}
-	
+
 }

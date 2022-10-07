@@ -1,4 +1,4 @@
-package pom.UnifiedTaraTests;
+package pom.UnifiedTara_realnumber_Tests;
 
 import java.io.File;
 import java.io.IOException;
@@ -36,9 +36,9 @@ public class BaseTest extends TMConstants {
 		DesiredCapabilities capabilities = new DesiredCapabilities();
 		// with real device
 
-		capabilities.setCapability("deviceName", "Redmi Sasi");
-		capabilities.setCapability("udid", "9ecba005");
-		capabilities.setCapability("platformVersion", "11");
+		capabilities.setCapability("deviceName", TMConstants.RealdeviceName);
+		capabilities.setCapability("udid", TMConstants.UDID);
+		capabilities.setCapability("platformVersion", TMConstants.PlatFormVersion);
 
 		// with emulator
 
@@ -49,8 +49,10 @@ public class BaseTest extends TMConstants {
 		capabilities.setCapability("appActivity", TMConstants.APPWAITACTIVITY);
 		capabilities.setCapability("appPackage", TMConstants.APPACTIVITY);
 		capabilities.setCapability("autoGrantPermissions", "true");
-		// capabilities.setCapability("noReset", "true");
-		capabilities.setCapability("fullReset", "false");
+		// capabilities.setCapability(MobileCapabilityType.SUPPORTS_ALERTS, true);
+
+		capabilities.setCapability("noReset", "true");
+		// capabilities.setCapability("fullReset", "false");
 		capabilities.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, 180);
 		capabilities.setCapability("app", app.getAbsolutePath());
 		try {
@@ -60,10 +62,9 @@ public class BaseTest extends TMConstants {
 			// -p 4723\"");
 			// Thread.sleep(20000);
 //						
-			driver = new AndroidDriver<AndroidElement>(new URL(TMConstants.HUB_URL), capabilities);
-			aDriver = (AndroidDriver<AndroidElement>) driver;
-			// aDriver = new AndroidDriver<AndroidElement>(new URL(TMConstants.HUB_URL),
-			// capabilities);
+//		    driver = new AndroidDriver<AndroidElement>(new URL(TMConstants.HUB_URL), capabilities);
+//		aDriver = (AndroidDriver<AndroidElement>)driver;
+			aDriver = new AndroidDriver<AndroidElement>(new URL(TMConstants.HUB_URL), capabilities);
 
 			System.out.println("application launched successfully");
 		} catch (MalformedURLException e) {

@@ -1,4 +1,4 @@
-package pom.UnifiedTaraTests;
+package pom.UnifiedTara_realnumber_Tests;
 
 import java.io.IOException;
 
@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 import com.relevantcodes.extentreports.LogStatus;
 
-import pom.UnifiedTara.pages.HomePage;
+import pom.UnifiedTara.pages.OTPread_Page;
 import pom.UnifiedTara.pages.OrderProducts_IndividualUser_Page;
 import pom.UnifiedTara.util.TMConstants;
 
@@ -18,14 +18,9 @@ public class OrderProducts_IndividualUser extends BaseTest {
 		test.log(LogStatus.INFO, "Starting the order_individual test ");
 		launchApp();
 		Thread.sleep(4000);
-		HomePage hm;
-		hm = new HomePage(aDriver, test);
-		if (!hm.isElementPresent(TMConstants.Mobile_Text1)) {
-			hm.reportFail("login page is not not loaded");
-		}
-		hm.OTPValidation(TMConstants.MobileNumber, TMConstants.OTP0, TMConstants.OTP1, TMConstants.OTP2,
-				TMConstants.OTP3, TMConstants.OTP4, TMConstants.OTP5);
-		System.out.println("executed sucessfully");
+		OTPread_Page otppage = new OTPread_Page(aDriver, test);
+		otppage.OTPValidationMethod(TMConstants.RealMobileNumber);
+
 		// Runtime.getRuntime().exec("taskkill /F /IM cmd.exe");
 //		add_paymentoption_Page addpay=new add_paymentoption_Page(aDriver, test);
 //		addpay.navigatetomerchantiflareadyuser();

@@ -1,4 +1,4 @@
-package pom.UnifiedTaraTests;
+package pom.UnifiedTara_realnumber_Tests;
 
 import java.io.IOException;
 
@@ -7,30 +7,21 @@ import org.testng.annotations.Test;
 import com.relevantcodes.extentreports.LogStatus;
 
 import pom.UnifiedTara.pages.AddProduct_Page;
-import pom.UnifiedTara.pages.HomePage;
-import pom.UnifiedTara.util.TMConstants;
 
 public class AddProduct_Test extends BaseTest {
-
-	String testName1 = "Test1_addproduct";
-	String testName2 = "Test2_EditProduct";
-	String testName3 = "Test3_Deleteproduct";
-	String testName4 = "Test4_UploadCSV";
+	String testName1 = "addproduct";
+	String testName2 = "EditProduct";
+	String testName3 = "Deleteproduct";
 
 	@Test
-	public void Test1_addproduct() throws InterruptedException, IOException {
+	public void Test2_addproduct() throws InterruptedException, IOException {
 		test = rep.startTest(testName1);
 		test.log(LogStatus.INFO, "Starting the add product test ");
 		launchApp();
 		Thread.sleep(4000);
-		HomePage hm;
-		hm = new HomePage(aDriver, test);
-		if (!hm.isElementPresent(TMConstants.Mobile_Text1)) {
-			hm.reportFail("login page is not not loaded");
-		}
-		hm.OTPValidation(TMConstants.MobileNumber, TMConstants.OTP0, TMConstants.OTP1, TMConstants.OTP2,
-				TMConstants.OTP3, TMConstants.OTP4, TMConstants.OTP5);
-		System.out.println("executed sucessfully");
+//		OTPread_Page otppage=new OTPread_Page(aDriver, test);
+//	
+//		otppage.OTPValidationMethod(TMConstants.RealMobileNumber);
 		// Runtime.getRuntime().exec("taskkill /F /IM cmd.exe");
 //		add_paymentoption_Page addpay=new add_paymentoption_Page(aDriver, test);
 //		addpay.navigatetomerchantiflareadyuser();
@@ -43,7 +34,8 @@ public class AddProduct_Test extends BaseTest {
 	}
 
 	@Test
-	public void Test2_EditProduct() throws InterruptedException, IOException {
+	public void Test3_EditProduct() throws InterruptedException, IOException {
+
 		test = rep.startTest(testName2);
 		test.log(LogStatus.INFO, "Starting the edit product test ");
 
@@ -53,7 +45,7 @@ public class AddProduct_Test extends BaseTest {
 	}
 
 	@Test
-	public void Test3_Deleteproduct() throws InterruptedException {
+	public void Test4_Deleteproduct() throws InterruptedException {
 		test = rep.startTest(testName3);
 		test.log(LogStatus.INFO, "Starting the delete product test ");
 
@@ -62,23 +54,14 @@ public class AddProduct_Test extends BaseTest {
 	}
 
 	@Test
-	public void Test4_AddproductmoreDiscountthanprice() throws InterruptedException {
-		test = rep.startTest("AddproductmoreDiscountthanprice");
-		test.log(LogStatus.INFO, "Starting the Addproduct more Discount than price ");
-
-		AddProduct_Page addprod = new AddProduct_Page(aDriver, test);
-		addprod.AddproductmoreDiscountthanprice();
-	}
-
-	@Test
-	public void Test5_AddProductWithoutName() throws InterruptedException {
+	public void Test1_AddProductWithoutName() throws InterruptedException, IOException {
 		test = rep.startTest("AddProductWithoutName");
 		test.log(LogStatus.INFO, "Starting the AddProduct Without Name");
-
+		launchApp();
+		Thread.sleep(4000);
 		AddProduct_Page addprod = new AddProduct_Page(aDriver, test);
+		addprod.NavigationTo_addProduct();
 		addprod.AddProductWithoutName();
-//        aDriver.navigate().back();
-//        Thread.sleep(2000);
 
 	}
 

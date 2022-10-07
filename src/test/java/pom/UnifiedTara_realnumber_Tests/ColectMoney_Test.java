@@ -1,4 +1,4 @@
-package pom.UnifiedTaraTests;
+package pom.UnifiedTara_realnumber_Tests;
 
 import java.io.IOException;
 
@@ -7,9 +7,8 @@ import org.testng.annotations.Test;
 import com.relevantcodes.extentreports.LogStatus;
 
 import pom.UnifiedTara.pages.CollectMoney_Page;
-import pom.UnifiedTara.pages.HomePage;
 import pom.UnifiedTara.pages.OrderProducts_IndividualUser_Page;
-import pom.UnifiedTara.util.TMConstants;
+import pom.UnifiedTara.pages.SendMoney_Page;
 
 public class ColectMoney_Test extends BaseTest {
 
@@ -20,21 +19,22 @@ public class ColectMoney_Test extends BaseTest {
 		test = rep.startTest(testName);
 		test.log(LogStatus.INFO, "Starting the test ");
 		launchApp();
-		HomePage hm;
-		hm = new HomePage(aDriver, test);
-		if (!hm.isElementPresent(TMConstants.Mobile_Text1)) {
-			hm.reportFail("login page is not not loaded");
-		}
-		// PageFactory.initElements(aDriver, this);
-		Thread.sleep(10000);
-		hm.OTPValidation(TMConstants.MobileNumber, TMConstants.OTP0, TMConstants.OTP1, TMConstants.OTP2,
-				TMConstants.OTP3, TMConstants.OTP4, TMConstants.OTP5);
+		Thread.sleep(4000);
 
+//			OTPread_Page otppage=new OTPread_Page(aDriver, test);
+//			
+//			if(!otppage.isElementPresent(TMConstants.Mobile_Text1)){
+//				otppage.reportFail("login page is not not loaded");
+//			}
+//			otppage.OTPValidationMethod(TMConstants.RealMobileNumber);
 		CollectMoney_Page CMP = new CollectMoney_Page(aDriver, test);
 		CMP.AddCollectMoney();
 
 		OrderProducts_IndividualUser_Page IndiUser = new OrderProducts_IndividualUser_Page(aDriver, test);
 		IndiUser.NavigationTo_IndividualUser();
+
+		SendMoney_Page sp = new SendMoney_Page(aDriver, test);
+		sp.SendMoney();
 
 	}
 

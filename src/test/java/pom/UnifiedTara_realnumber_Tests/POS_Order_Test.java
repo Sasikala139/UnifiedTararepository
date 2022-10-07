@@ -1,4 +1,4 @@
-package pom.UnifiedTaraTests;
+package pom.UnifiedTara_realnumber_Tests;
 
 import java.io.IOException;
 
@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 import com.relevantcodes.extentreports.LogStatus;
 
 import pom.UnifiedTara.pages.AddProduct_Page;
-import pom.UnifiedTara.pages.HomePage;
+import pom.UnifiedTara.pages.OTPread_Page;
 import pom.UnifiedTara.pages.POS_Order;
 import pom.UnifiedTara.util.TMConstants;
 
@@ -23,15 +23,9 @@ public class POS_Order_Test extends BaseTest {
 
 		launchApp();
 		Thread.sleep(4000);
-		HomePage hm;
-		hm = new HomePage(aDriver, test);
-		if (!hm.isElementPresent(TMConstants.Mobile_Text1)) {
+		OTPread_Page otppage = new OTPread_Page(aDriver, test);
+		otppage.OTPValidationMethod(TMConstants.RealMobileNumber);
 
-			hm.reportFail("login page is not not loaded");
-		}
-		Thread.sleep(10000);
-		hm.OTPValidation(TMConstants.MobileNumber, TMConstants.OTP0, TMConstants.OTP1, TMConstants.OTP2,
-				TMConstants.OTP3, TMConstants.OTP4, TMConstants.OTP5);
 		// Runtime.getRuntime().exec("taskkill /F /IM cmd.exe");
 
 		// adding product to create order.

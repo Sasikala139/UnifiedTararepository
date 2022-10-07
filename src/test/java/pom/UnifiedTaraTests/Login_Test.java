@@ -11,7 +11,7 @@ import pom.UnifiedTara.util.TMConstants;
 
 public class Login_Test extends BaseTest {
 
-	String testName="LoginTest";
+	String testName = "LoginTest";
 
 	@Test
 	public void logintest() throws InterruptedException, IOException {
@@ -21,33 +21,30 @@ public class Login_Test extends BaseTest {
 
 		launchApp();
 		HomePage hm;
-		hm=new HomePage(aDriver, test);
-		if(!hm.isElementPresent(TMConstants.Mobile_Text1)){
+		hm = new HomePage(aDriver, test);
+		if (!hm.isElementPresent(TMConstants.Mobile_Text1)) {
 			hm.reportFail("login page is not not loaded");
 		}
-		//PageFactory.initElements(aDriver, this);
+		// PageFactory.initElements(aDriver, this);
 		Thread.sleep(10000);
-		hm.OTPValidation(TMConstants.MobileNumber,TMConstants.OTP0,TMConstants.OTP1,TMConstants.OTP2,TMConstants.OTP3,TMConstants.OTP4,TMConstants.OTP0);
-		if(!hm.isElementPresent(TMConstants.allowmsgpopup))
-		{
-			//hm.reportFail("Login failed");
+		hm.OTPValidation(TMConstants.MobileNumber, TMConstants.OTP0, TMConstants.OTP1, TMConstants.OTP2,
+				TMConstants.OTP3, TMConstants.OTP4, TMConstants.OTP0);
+		if (!hm.isElementPresent(TMConstants.allowmsgpopup)) {
+			// hm.reportFail("Login failed");
 			test.log(LogStatus.INFO, "login failed with invalid OTP ");
-		
-			hm.OTP(TMConstants.OTP0,TMConstants.OTP1,TMConstants.OTP2,TMConstants.OTP3,TMConstants.OTP4,TMConstants.OTP5);
-			
-		}
-		else
-		{
+
+			hm.OTP(TMConstants.OTP0, TMConstants.OTP1, TMConstants.OTP2, TMConstants.OTP3, TMConstants.OTP4,
+					TMConstants.OTP5);
+
+		} else {
 			test.log(LogStatus.INFO, "logged in successfully");
 		}
-			
-	//	hm.logout();
-	//Runtime.getRuntime().exec("taskkill /F /IM appium");
-	//Runtime.getRuntime().exec("taskkill /F /IM cmd.exe");
-	//	System.out.println("appium server closed successfully");
+
+		// hm.logout();
+		// Runtime.getRuntime().exec("taskkill /F /IM appium");
+		// Runtime.getRuntime().exec("taskkill /F /IM cmd.exe");
+		// System.out.println("appium server closed successfully");
 
 	}
-	
-	
-	
+
 }

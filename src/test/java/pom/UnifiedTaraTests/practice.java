@@ -8,7 +8,7 @@ import com.relevantcodes.extentreports.LogStatus;
 
 import pom.UnifiedTara.pages.OTPread_Page;
 
-public class practice  extends BaseTest {
+public class practice extends BaseTest {
 
 	@Test
 	public void Login_readOTP() throws InterruptedException, IOException {
@@ -16,14 +16,12 @@ public class practice  extends BaseTest {
 		test.log(LogStatus.INFO, "Starting the test ");
 		launchApp();
 		Thread.sleep(4000);
-		
-		OTPread_Page OT=new OTPread_Page(aDriver, test);
-		//PageFactory.initElements(aDriver, this);
+
+		OTPread_Page OT = new OTPread_Page(aDriver, test);
+		// PageFactory.initElements(aDriver, this);
 		Thread.sleep(10000);
 		OT.OTPValidationMethod("8884254279");
-		
-		
-			
-    }
 
 	}
+
+}

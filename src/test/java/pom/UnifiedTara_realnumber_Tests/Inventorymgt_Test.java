@@ -1,4 +1,4 @@
-package pom.UnifiedTaraTests;
+package pom.UnifiedTara_realnumber_Tests;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -9,10 +9,8 @@ import org.testng.annotations.Test;
 import com.relevantcodes.extentreports.LogStatus;
 
 import pom.UnifiedTara.pages.AddProduct_Page;
-import pom.UnifiedTara.pages.HomePage;
 import pom.UnifiedTara.pages.POS_Order;
 import pom.UnifiedTara.pages.base.BasePage;
-import pom.UnifiedTara.util.TMConstants;
 
 public class Inventorymgt_Test extends BaseTest {
 
@@ -21,16 +19,15 @@ public class Inventorymgt_Test extends BaseTest {
 		test = rep.startTest("Product count check");
 		test.log(LogStatus.INFO, "Starting inventory mgt test ");
 		System.out.println("Starting inventory mgt test ");
-
 		launchApp();
 		Thread.sleep(4000);
-		HomePage hm;
-		hm = new HomePage(aDriver, test);
-		if (!hm.isElementPresent(TMConstants.Mobile_Text1)) {
-			hm.reportFail("login page is not not loaded");
-		}
-		hm.OTPValidation(TMConstants.MobileNumber, TMConstants.OTP0, TMConstants.OTP1, TMConstants.OTP2,
-				TMConstants.OTP3, TMConstants.OTP4, TMConstants.OTP5);
+
+//		OTPread_Page otppage=new OTPread_Page(aDriver, test);
+//		
+//		if(!otppage.isElementPresent(TMConstants.Mobile_Text1)){
+//			otppage.reportFail("login page is not not loaded");
+//		}
+//		otppage.OTPValidationMethod(TMConstants.RealMobileNumber);
 		// Runtime.getRuntime().exec("taskkill /F /IM cmd.exe");
 //		add_paymentoption_Page addpay=new add_paymentoption_Page(aDriver, test);
 //		addpay.navigatetomerchantiflareadyuser();
@@ -40,6 +37,7 @@ public class Inventorymgt_Test extends BaseTest {
 		addprod.NavigationTo_addProduct();
 		addprod.AddProductfororder("TestProdforcountChk", "1000", "10");
 		Thread.sleep(5000);
+		addprod.SearchProduct("TestProdforcountChk");
 		WebElement productstirng = aDriver
 				.findElementByXPath("//android.view.View[contains(@content-desc,'TestProdforcountChk')]");
 		String beforeorderquantity = productstirng.getTagName();
@@ -50,6 +48,7 @@ public class Inventorymgt_Test extends BaseTest {
 		pos.OrderThroughPos_cash();
 		addprod.NavigationTo_addProduct();
 		Thread.sleep(12000);
+		addprod.SearchProduct("TestProdforcountChk");
 
 		WebElement productstirng1 = aDriver
 				.findElementByXPath("//android.view.View[contains(@content-desc,'TestProdforcountChk')]");
@@ -89,7 +88,7 @@ public class Inventorymgt_Test extends BaseTest {
 			BP.reportFail("Ooops! Count is not changed");
 		}
 
-		System.out.println("Test Executed Successfully ");
+		System.out.println("inventory mgt Test Executed Successfully  ");
 
 	}
 }
